@@ -1,1 +1,4 @@
-# MyGamesTMP
+# Multiple resolutions
+
+
+
