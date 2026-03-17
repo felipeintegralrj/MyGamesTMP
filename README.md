@@ -11,13 +11,13 @@ Como já foi dito antes, a resolução do viewport (resolução base) é definid
 Antes de começar a falar dos outros parâmetros, é necessário comentar sobre a aba "Game" que tem no editor e nunca foi usada até agora.
 
 <p align="center">
-  <img width="300" src="https://github.com/user-attachments/assets/f1c116b3-ca5b-4c8c-b992-45f69dd76721" />
+  <img width="400" src="https://github.com/user-attachments/assets/f1c116b3-ca5b-4c8c-b992-45f69dd76721" />
 </p>
 
 Ter as duas opções abaixo marcadas é o default. Ao dar play, ele vai abrir uma nova janela do editor, contendo o jogo sendo executado. Se você desmarcar apenas a opção *Make Game Workspace Floating on Next Play*, o jogo será carregado dentro do editor em vez de ser em um janela por fora. Se você desmarcar a opção *Embed Game on Next Play*, ele vai abrir uma janela contendo apenas o jogo ao ser executado. A diferença desta janela para a anterior é que esta mostra apenas o jogo, enquanto que a anterior tem opções do editor.
 
 <p align="center">
-  <img width="948" height="187" alt="image" src="https://github.com/user-attachments/assets/0889d3a4-8c68-4e99-9ca3-1a89141f5267" />
+  <img width="850" src="https://github.com/user-attachments/assets/0889d3a4-8c68-4e99-9ca3-1a89141f5267" />
 </p>
 
 É importante essa distinção pois a janela do editor não é a janela do jogo. Ou seja, se você tentar alterar o tamanho da janela do jogo com a opção *Embed Game on Next Play* marcada, nada vai acontecer. Caso queira ver este comportamento no jogo, deve desmarcar a opção *Embed Game on Next Play*. Aí a janela a ser aberta será de fato a janela do jogo, não do editor. 
