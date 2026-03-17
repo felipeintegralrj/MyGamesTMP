@@ -54,3 +54,7 @@ Note que no caso da tela cheia, tivemos um fundo branco que passou a ser cinza d
 <p align="center">
   <img width="900" src="https://github.com/user-attachments/assets/c7c1ed77-7ede-4cc5-8a4c-1009222792d6" />
 </p>
+
+- **Canvas Items:**
+
+- **Viewport:**
