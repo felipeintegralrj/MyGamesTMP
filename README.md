@@ -20,7 +20,9 @@ Ter as duas opções abaixo marcadas é o default. Ao dar play, ele vai abrir um
   <img width="948" height="187" alt="image" src="https://github.com/user-attachments/assets/0889d3a4-8c68-4e99-9ca3-1a89141f5267" />
 </p>
 
-É importante essa distinção pois a janela do editor não é a janela do jogo. Ou seja, se você tentar alterar o tamanho da janela do jogo com a opção *Embed Game on Next Play* marcada, nada vai acontecer. Caso queira ver este comportamento no jogo, deve desmarcar a opção *Embed Game on Next Play*. Aí a janela a ser aberta será de fato a janela do jogo, não do editor.
+É importante essa distinção pois a janela do editor não é a janela do jogo. Ou seja, se você tentar alterar o tamanho da janela do jogo com a opção *Embed Game on Next Play* marcada, nada vai acontecer. Caso queira ver este comportamento no jogo, deve desmarcar a opção *Embed Game on Next Play*. Aí a janela a ser aberta será de fato a janela do jogo, não do editor. 
+
+> PS: Fora do contexto deste tutorial, este conhecimento pode ser útil para quem não quer mais janelas sendo abertas durante o desenvolvimento. Muitas vezes é mais prátio alternar abas na Godot que alternar janelas (editor e jogo).
 
 ## Size/Mode
 
