@@ -4,7 +4,23 @@ O problema de lidar com resoluções é antigo, e muitas abordagens já foram us
 
 Esta *resolução base* é a mesma que foi mencionada no [tutorial de viewports](https://github.com/felipebottega/Games/tree/gh-pages/Manual/Rendering/Using%20Viewports#size-e-stretch). Lembre que no tutorial do jogo [Galton Board 4](https://github.com/felipebottega/Games/tree/gh-pages/Manual/2D/Canvas%20layers/Galton%20Board%204#viewport-e-canvas-items) foi dito que o viewport é o espaço delimitado pelo retângulo azul do editor, e que este espaço representa a tela que o jogador enxerga no jogo. A resolução do viewport é esta resolução base. Portanto, a resolução base nada mais é do que a resolução "ideal" do seu jogo. Você define a resolução do jogo, desenvolve o jogo usando o viewport com estas dimensões, e só depois que o jogo está pronto é que você usa as funcionalidades da engine para ajustar a resolução base para uma outra resolução, a depender do dispositivo e configuração do jogador. 
 
-Como já foi dito antes, a resolução do viewport (resolução base) é definida em *Project → Project Settings → Display → Window → Size → Viewport width/Height*. Além destes dois parâmetros, há outros essenciais nesta mesma tela de configurações. São estes parâmetros que definem o conjunto de funcionalidades para lidar com múltiplas resoluções. 
+Como já foi dito antes, a resolução do viewport (resolução base) é definida em *Project → Project Settings → Display → Window → Size → Viewport width/Height*. Além destes dois parâmetros, há outros essenciais nesta mesma tela de configurações. São estes parâmetros que definem o conjunto de funcionalidades para lidar com múltiplas resoluções.
+
+## Aba Game
+
+Antes de começar a falar dos outros parâmetros, é necessário comentar sobre a aba "Game" que tem no editor e nunca foi usada até agora.
+
+<p align="center">
+  <img width="300" src="https://github.com/user-attachments/assets/f1c116b3-ca5b-4c8c-b992-45f69dd76721" />
+</p>
+
+Ter as duas opções abaixo marcadas é o default. Ao dar play, ele vai abrir uma nova janela do editor, contendo o jogo sendo executado. Se você desmarcar apenas a opção *Make Game Workspace Floating on Next Play*, o jogo será carregado dentro do editor em vez de ser em um janela por fora. Se você desmarcar a opção *Embed Game on Next Play*, ele vai abrir uma janela contendo apenas o jogo ao ser executado. A diferença desta janela para a anterior é que esta mostra apenas o jogo, enquanto que a anterior tem opções do editor.
+
+<p align="center">
+  <img width="948" height="187" alt="image" src="https://github.com/user-attachments/assets/0889d3a4-8c68-4e99-9ca3-1a89141f5267" />
+</p>
+
+É importante essa distinção pois a janela do editor não é a janela do jogo. Ou seja, se você tentar alterar o tamanho da janela do jogo com a opção *Embed Game on Next Play* marcada, nada vai acontecer. Caso queira ver este comportamento no jogo, deve desmarcar a opção *Embed Game on Next Play*. Aí a janela a ser aberta será de fato a janela do jogo, não do editor.
 
 ## Size/Mode
 
@@ -18,7 +34,21 @@ Você pode alterar este parâmetro durante a execução do jogo com o comando `D
     WINDOW_MODE_FULLSCREEN = 3
     WINDOW_MODE_EXCLUSIVE_FULLSCREEN = 4
 
+Ao colocar em modo de janela (windowed), a resolução é ajustada dinamicamente enquanto você altera o tamanho da janela. Ao colocar em tela cheia (fullscreen), a resolução é ajustada para igualar a resolução do monitor. 
 
 ## Stretch/Mode
 
+O *stretch mode* determina como a resolução base é esticada para se encaixar na janela ou tela do monitor. Há três opções:
 
+- **Disabled:**  Nenhum esticamento é feito. Se o seu jogo está em $640 \times 480$ e você coloca ele para rodar em tela cheia em um monitor de $1920 \times 1080$, ele vai manter o tamanho original e o restante do espaço será preenchido com o que tiver de visível além do viewport (veremos adiante a opção que afeta este comportamento). Abaixo temos um exemplo de um jogo renderizado em uma janela de dimensões $720 \times 720$ e depois o mesmo renderizado em tela cheia. O stretch mode ele está em *Disabled*, por isso a mudança de tamanho da tela apenas ampliou o espaço visível, sem afetar a resolução do jogo em si. 
+
+<p align="center">
+  <img width="500" src="https://github.com/user-attachments/assets/e3a39dac-531c-4fcb-bbcb-9901de9a179b" />
+  <img width="950" src="https://github.com/user-attachments/assets/b6ce5921-403e-4f0f-8ed3-b97fccc3d493" />
+</p>
+
+Note que no caso da tela cheia, tivemos um fundo branco que passou a ser cinza de repente. Isso aconteceu porque a tela cheia conseguiu ir além do background branco que tinha no jogo, revelando um pouco do espaço vazio do viewport.
+
+<p align="center">
+  <img width="900" src="https://github.com/user-attachments/assets/c7c1ed77-7ede-4cc5-8a4c-1009222792d6" />
+</p>
