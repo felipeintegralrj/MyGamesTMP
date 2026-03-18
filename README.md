@@ -1,8 +1,8 @@
 # Multiple resolutions
 
-O problema de lidar com resoluções é antigo, e muitas abordagens já foram usadas para lidar com isso. A Godot usa uma abordagem muito comum hoje em dia: criar o jogo todo em uma *resolução base* e usar as funcionalidades da engine para encaixar onde for necessário. Como veremos, a Godot fornece um conjunto de funcionalidades para que esses ajustes de resolução sejam fáceis e práticos. 
+O problema de lidar com resoluções é antigo, e muitas abordagens já foram usadas para lidar com isso. A Godot usa uma abordagem muito comum hoje em dia: criar o jogo todo em uma *resolução base* e usar as funcionalidades da engine para encaixar a tela do jogo onde for necessário. Como veremos, a Godot fornece um conjunto de funcionalidades para que esses ajustes de resolução sejam fáceis e práticos. 
 
-Esta *resolução base* é a mesma que foi mencionada no [tutorial de viewports](https://github.com/felipebottega/Games/tree/gh-pages/Manual/Rendering/Using%20Viewports#size-e-stretch). Lembre que no tutorial do jogo [Galton Board 4](https://github.com/felipebottega/Games/tree/gh-pages/Manual/2D/Canvas%20layers/Galton%20Board%204#viewport-e-canvas-items) foi dito que o viewport é o espaço delimitado pelo retângulo azul do editor, e que este espaço representa a tela que o jogador enxerga no jogo. A resolução do viewport é esta resolução base. Portanto, a resolução base nada mais é do que a resolução "ideal" do seu jogo. Você define a resolução do jogo, desenvolve o jogo usando o viewport com estas dimensões, e só depois que o jogo está pronto é que você usa as funcionalidades da engine para ajustar a resolução base para uma outra resolução, a depender do dispositivo e configuração do jogador. 
+Lembre que no tutorial do jogo [Galton Board 4](https://github.com/felipebottega/Games/tree/gh-pages/Manual/2D/Canvas%20layers/Galton%20Board%204#viewport-e-canvas-items) foi dito que o viewport é o espaço delimitado pelo retângulo azul do editor, e que este espaço representa a tela que o jogador enxerga no jogo. A resolução do viewport é esta resolução base (é a mesma que foi mencionada no [tutorial de viewports](https://github.com/felipebottega/Games/tree/gh-pages/Manual/Rendering/Using%20Viewports#size-e-stretch) no caso de subviewport). Portanto, a resolução base nada mais é do que a resolução "ideal" do seu jogo. Você define a resolução do jogo, desenvolve o jogo usando o viewport com estas dimensões, e só depois que o jogo está pronto é que você usa as funcionalidades da engine para ajustar a resolução base para uma outra resolução, a depender do dispositivo e configuração utilizada no jogo. 
 
 Como já foi dito antes, a resolução do viewport (resolução base) é definida em *Project → Project Settings → Display → Window → Size → Viewport width/Height*. Além destes dois parâmetros, há outros essenciais nesta mesma tela de configurações. São estes parâmetros que definem o conjunto de funcionalidades para lidar com múltiplas resoluções.
 
@@ -14,13 +14,13 @@ Antes de começar a falar dos outros parâmetros, é necessário comentar sobre 
   <img width="400" src="https://github.com/user-attachments/assets/f1c116b3-ca5b-4c8c-b992-45f69dd76721" />
 </p>
 
-Ter as duas opções abaixo marcadas é o default. Ao dar play, ele vai abrir uma nova janela do editor, contendo o jogo sendo executado. Se você desmarcar apenas a opção *Make Game Workspace Floating on Next Play*, o jogo será carregado dentro do editor em vez de ser em um janela por fora. Se você desmarcar a opção *Embed Game on Next Play*, ele vai abrir uma janela contendo apenas o jogo ao ser executado. A diferença desta janela para a anterior é que esta mostra apenas o jogo, enquanto que a anterior tem opções do editor.
+Ter as duas opções abaixo marcadas é o default. Ao dar play, ele vai abrir uma nova janela do editor, contendo o jogo sendo executado. Se você desmarcar apenas a opção *Make Game Workspace Floating on Next Play*, o jogo será carregado dentro do editor em vez de criar uma janela nova. Se você desmarcar a opção *Embed Game on Next Play*, ele vai abrir uma janela contendo apenas o jogo ao ser executado. A diferença desta janela para a anterior é que esta mostra apenas o jogo, enquanto que a anterior tem opções do editor.
 
 <p align="center">
   <img width="850" src="https://github.com/user-attachments/assets/0889d3a4-8c68-4e99-9ca3-1a89141f5267" />
 </p>
 
-É importante essa distinção pois a janela do editor não é a janela do jogo. Ou seja, se você tentar alterar o tamanho da janela do jogo com a opção *Embed Game on Next Play* marcada, nada vai acontecer. Caso queira ver este comportamento no jogo, deve desmarcar a opção *Embed Game on Next Play*. Aí a janela a ser aberta será de fato a janela do jogo, não do editor. 
+É importante essa distinção pois a janela do editor não é a janela do jogo. Ou seja, se você tentar alterar o tamanho da janela do jogo via script com a opção *Embed Game on Next Play* marcada, nada vai acontecer. Caso queira ver este comportamento no jogo, deve desmarcar a opção *Embed Game on Next Play*. Aí a janela a ser aberta será de fato a janela do jogo, não do editor. 
 
 > PS: Fora do contexto deste tutorial, esse conhecimento pode ser útil para quem não quer mais janelas sendo abertas durante o desenvolvimento. Muitas vezes é mais prático alternar abas na Godot que alternar janelas (editor e jogo).
 
@@ -40,19 +40,19 @@ Ao colocar em modo de janela (windowed), a resolução é ajustada dinamicamente
 
 ## Stretch/Mode
 
-O *stretch mode* determina como a resolução base é esticada para se encaixar na janela ou tela do monitor. Há três opções:
+O *stretch mode* determina como a resolução base é esticada para se encaixar na janela ou tela. Há três opções:
 
-- **Disabled:**  Nenhum esticamento é feito. Se o seu jogo está em $640 \times 480$ e você coloca ele para rodar em tela cheia em um monitor de $1920 \times 1080$, ele vai manter o tamanho original e o restante do espaço será preenchido com o que tiver de visível além do viewport (veremos adiante a opção que afeta este comportamento). Abaixo temos um exemplo de um jogo renderizado em uma janela de dimensões $720 \times 720$ e depois o mesmo renderizado em tela cheia. O stretch mode ele está em *Disabled*, por isso a mudança de tamanho da tela apenas ampliou o espaço visível, sem afetar a resolução do jogo em si. 
+- **Disabled:**  Nenhum esticamento é feito. Se o seu jogo está em $640 \times 480$ e você coloca ele para rodar em tela cheia em um monitor de $1920 \times 1080$, ele vai manter o tamanho original e o restante do espaço será simplesmente preenchido (veremos adiante como pode ser feito este preenchimento). Abaixo temos um exemplo de um jogo renderizado em uma janela de dimensões $720 \times 720$ e depois o mesmo renderizado em tela cheia. O stretch mode ele está em *Disabled*, por isso a mudança de tamanho da tela apenas ampliou o espaço visível, sem afetar a resolução do jogo em si. 
 
 <p align="center">
-  <img width="500" src="https://github.com/user-attachments/assets/e3a39dac-531c-4fcb-bbcb-9901de9a179b" />
-  <img width="950" src="https://github.com/user-attachments/assets/b6ce5921-403e-4f0f-8ed3-b97fccc3d493" />
+  <img width="350" src="https://github.com/user-attachments/assets/e3a39dac-531c-4fcb-bbcb-9901de9a179b" />
+  <img width="1100" src="https://github.com/user-attachments/assets/b6ce5921-403e-4f0f-8ed3-b97fccc3d493" />
 </p>
 
 Note que no caso da tela cheia, tivemos um fundo branco que passou a ser cinza de repente. Isso aconteceu porque a tela cheia conseguiu ir além do background branco que tinha no jogo, revelando um pouco do espaço vazio do viewport.
 
 <p align="center">
-  <img width="900" src="https://github.com/user-attachments/assets/c7c1ed77-7ede-4cc5-8a4c-1009222792d6" />
+  <img width="1100" src="https://github.com/user-attachments/assets/363c8f2c-3b76-421a-a72b-20cf73213da0" />
 </p>
 
 - **Canvas Items:**
