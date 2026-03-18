@@ -55,6 +55,6 @@ Note que no caso da tela cheia, tivemos um fundo branco que passou a ser cinza d
   <img width="1100" src="https://github.com/user-attachments/assets/363c8f2c-3b76-421a-a72b-20cf73213da0" />
 </p>
 
-- **Canvas Items:**
+- **Canvas Items:** Neste modo, o jogo primeiro é renderizado na sua resolução base. Se houver algum esticamento, ele simplesmente vai ampliar o jogo já renderizado. Se o seu jogo está em $640 \times 480$ e você coloca ele para rodar em tela cheia em um monitor de $1920 \times 1080$, ele vai renderizar em $640 \times 480$ e depois ampliar $1920 \times 1080$ sem aplicar nenhum algoritmo extra. Isso pode resultar em pixels grandes. Este modo é ideal quando você quer fidelidade à pixel-art do jogo.
 
-- **Viewport:**
+- **Viewport:** Neste modo, o jojo é renderizado na resolução target. Se houver algum esticamente, ele vai considerar a resolução ampliada e renderizar nesta dimensão. Se o seu jogo está em $640 \times 480$ e você coloca ele para rodar em tela cheia em um monitor de $1920 \times 1080$, ele vai renderizar em $1920 \times 1080$, o que pode envolver aplicar nenhum algoritmo extra de up-sampling, por exemplo. é possível inrtroduzir artefatos na pixel-art com este modo, mas ele garante mais qualidade geral para dimensões maiores que a resolução base.
