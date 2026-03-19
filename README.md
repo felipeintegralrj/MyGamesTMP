@@ -28,7 +28,7 @@ Ter as duas opções abaixo marcadas é o default. Ao dar play, ele vai abrir um
 
 Fora a resolução base vista acima, este é o parâmetro mais simples de todos. Ele determina como a tela é carregada inicialmente quando o jogo abre. Acredito que as opções são claras, com exceção do fullscreen, pois há duas opções neste caso. O recomendado é usar a opção *Exclusive Fullscreen*, pois esta é feita para jogos, enquanto que a outra é para um outro tipo de aplicação específica.
 
-Você pode alterar este parâmetro durante a execução do jogo com o comando `DisplayServer.window_set_mode(i)`, em que $i$ é um inteiro entre $0$ e $4$. Seguem abaixo os valores que você pode passar para a função. Vale notar que cada valor está associado a uma constante da engine também.
+Você pode alterar este parâmetro durante a execução do jogo com o comando `DisplayServer.window_set_mode(i)`, em que $i$ é um inteiro entre $0$ e $4$. Seguem abaixo os valores que você pode passar para a função. Cada valor está associado a uma constante da engine também.
   
     WINDOW_MODE_WINDOWED = 0
     WINDOW_MODE_MINIMIZED = 1
@@ -40,7 +40,11 @@ Ao colocar em modo de janela (windowed), a resolução é ajustada dinamicamente
 
 ## Stretch/Mode
 
-O *stretch mode* determina como a resolução base é esticada para se encaixar na janela ou tela. Há três opções:
+O *stretch mode* determina como a resolução base é esticada para se encaixar na janela ou tela. Você pode alterar este parâmetro durante a execução do jogo com o comando `get_tree().root.content_scale_mode = i`, em que $i$ é um inteiro entre $0$ e $2$. Cada valor está associado a uma constante da engine também.
+  
+    CONTENT_SCALE_MODE_DISABLED = 0
+    CONTENT_SCALE_MODE_CANVAS_ITEMS = 1
+    CONTENT_SCALE_MODE_VIEWPORT = 2
 
 - **Disabled:**  Nenhum esticamento é feito. Se o seu jogo está em $640 \times 480$ e você coloca ele para rodar em tela cheia em um monitor de $1920 \times 1080$, ele vai manter o tamanho original e o restante do espaço será simplesmente preenchido (veremos adiante como pode ser feito este preenchimento). Abaixo temos um exemplo de um jogo renderizado em uma janela de dimensões $720 \times 720$ e depois o mesmo renderizado em tela cheia. O stretch mode ele está em *Disabled*, por isso a mudança de tamanho da tela apenas ampliou o espaço visível, sem afetar a resolução do jogo em si. 
 
@@ -75,4 +79,8 @@ Apesar de não ser evidente, o quadriculado e logo da Godot também sofreram alt
 
 Na questão de movimento, também há diferenças entre o modo canvas items e o viewport. A tentação é dizer que o canvas items é melhor se pensar muito, mas é importante ter em mente que ele cria pixels para o up-scaling, enquanto que o viewport é mais fiel a pixel-art original. Tudo depende do que você quer no seu jogo.
 
-##
+## Aspect/Ignore
+
+Este parâmetro determina como a figura deforma e o que a tela mostra ao esticar. Só tem efeito se o stretch mode não for *disabled*.
+
+- **Ignore:** 
