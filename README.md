@@ -59,8 +59,14 @@ Note que no caso da tela cheia, tivemos um fundo branco que passou a ser cinza d
 
 - **Viewport:** Neste modo, o jojo é renderizado na resolução target. Se houver algum esticamente, ele vai considerar a resolução ampliada e renderizar nesta dimensão. Se o seu jogo está em $640 \times 480$ e você coloca ele para rodar em tela cheia em um monitor de $1920 \times 1080$, ele vai renderizar em $1920 \times 1080$, o que pode envolver aplicar nenhum algoritmo extra de up-sampling, por exemplo. É possível inrtroduzir artefatos na pixel-art com este modo, mas ele garante mais qualidade geral para dimensões maiores que a resolução base.
 
-Na figura abaixo nós podemos ver claramente a diferença entre o modo canvas items e viewport. Para começar a análise, é importante mencionar que a resolução base é $180 \times 180$. O jogo está rodando em $1920 \ times 720$, então a resolução está sendo aumentada em relação a original. Entre as duas imagens, a única diferença é o stretch mode, sendo canvas items na esquerda e viewport na direita. Toda a UI (*user interface*) é afetada por essa escolha, como podemos ver claramente. Apesar de não ser evidente, o quadriculado e logo da Godot também sofreram alterações. Originalmente, são imagens pixeladas e com largura de $180$ pixels. Note que no modo canvas items a figura tem um certo embaçamento, resultado do up-scaling aplicado pelo modo canvas items.  
+Na figura abaixo nós podemos ver claramente a diferença entre o modo canvas items e viewport. Para começar a análise, é importante mencionar que a resolução base é $180 \times 180$. O jogo está rodando em $1920 \times 720$, então a resolução está sendo aumentada em relação a original. Entre as duas imagens, a única diferença é o stretch mode, sendo canvas items na esquerda e viewport na direita. Toda a UI (*user interface*) é afetada por essa escolha, como podemos ver claramente. 
 
 <p align="center">
   <img width="800" src="https://github.com/user-attachments/assets/6ebe17a9-b450-4a16-a9c4-38c7610a6377" />
+</p>
+
+Apesar de não ser evidente, o quadriculado e logo da Godot também sofreram alterações. Originalmente, são imagens pixeladas e com largura de $180$ pixels. Note que no modo canvas items a figura tem um certo embaçamento, resultado do up-scaling aplicado pelo modo canvas items. Podemos trocar estas imagens pequenas por uma de alta resolução. Não importa se vamos colocar uma imagem de alta resolução em uma resolução base $180 \times 180$, a engine sabe que a imagem tem resolução alta e vai usar isso se o jogo utilizar uma resolução maior no fim das contas. 
+
+<p align="center">
+  <img width="800" src="https://github.com/user-attachments/assets/6f9dcb8c-9a4c-4e42-a329-0452f5b21c4f" />
 </p>
