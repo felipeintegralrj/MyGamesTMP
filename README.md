@@ -65,8 +65,10 @@ Na figura abaixo nós podemos ver claramente a diferença entre o modo canvas it
   <img width="800" src="https://github.com/user-attachments/assets/6ebe17a9-b450-4a16-a9c4-38c7610a6377" />
 </p>
 
-Apesar de não ser evidente, o quadriculado e logo da Godot também sofreram alterações. Originalmente, são imagens pixeladas e com largura de $180$ pixels. Note que no modo canvas items a figura tem um certo embaçamento, resultado do up-scaling aplicado pelo modo canvas items. Podemos trocar estas imagens pequenas por uma de alta resolução. Não importa se vamos colocar uma imagem de alta resolução em uma resolução base $180 \times 180$, a engine sabe que a imagem tem resolução alta e vai usar isso se o jogo utilizar uma resolução maior no fim das contas. 
+Apesar de não ser evidente, o quadriculado e logo da Godot também sofreram alterações. Originalmente, são imagens pixeladas e com largura de $180$ pixels. Note que no modo canvas items a figura tem um certo embaçamento, resultado do up-scaling aplicado. Podemos trocar estas imagens pequenas por uma de alta resolução. Note que não importa se vamos colocar uma imagem de alta resolução em uma resolução base $180 \times 180$, a engine sabe que a imagem tem resolução alta e vai usar isso se o jogo pedir por uma resolução maior no fim das contas. 
 
 <p align="center">
   <img width="800" src="https://github.com/user-attachments/assets/6f9dcb8c-9a4c-4e42-a329-0452f5b21c4f" />
 </p>
+
+> PS: Você pode fazer um jogo inteiro utilizando assets de resolução alta em um viewport de resolução base mais baixa, de modo a ter duas opções de resolução no seu jogo. A figura acima indica isso. Porém, isso não é prático, pois é limitado a duas resoluções apenas. Para ter múltiplas resoluções, o indicado é usar o modo windowed e escolher alguma resolução dentre as várias opções. Se você quiser múltiplas escolhas de resolução em fullscreen, é melhor usar subviewport. Veremos como fazer isso no próximo tutorial.
